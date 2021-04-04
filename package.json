@@ -1,0 +1,24 @@
+{
+  "name": "hotel-management",
+  "version": "1.0.0",
+  "description": "Hotel management app in electron react",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csfx-py/hotel-manager.git"
+  },
+  "author": "Shreyas Prabhu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csfx-py/hotel-manager/issues"
+  },
+  "homepage": "https://github.com/csfx-py/hotel-manager#readme",
+  "devDependencies": {
+    "electron": "^11.3.0"
+  },
+  "dependencies": {}
+}
