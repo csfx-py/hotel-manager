@@ -1,17 +1,18 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import SideBarItems from "./SideBarItems";
+import { HomeContainer, SideBar } from "./HomeElements";
 
 const Home = (props) => {
-  const history = useHistory();
   return (
-    <button
-      onClick={(e) => {
-        props.setToken(null);
-        history.push("/");
-      }}
-    >
-      Logout
-    </button>
+    <HomeContainer>
+      <Router>
+        <SideBar>
+          <SideBarItems setToken={props.setToken} />
+        </SideBar>
+        <Switch></Switch>
+      </Router>
+    </HomeContainer>
   );
 };
 
