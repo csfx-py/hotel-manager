@@ -1,12 +1,13 @@
-const { app, BrowserWindow, screen, ipcMain } = require("electron");
+const { app, BrowserWindow, screen, ipcMain, dialog } = require("electron");
 const path = require("path");
 const isDev = !app.isPackaged;
+let win = null;
 
 function createWindow() {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   // const width = 800;
   // const height = 600;
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: width,
     height: height,
     minHeight: 600,
@@ -50,6 +51,10 @@ app.on("activate", () => {
 });
 
 // -------------------------------- I P C --------------------------------
+
 ipcMain.on("message", (e, data) => {
-  console.log(data);
+  dialog.showMessageBox(win, {
+    message: data.message,
+    title: data.title,
+  });
 });
