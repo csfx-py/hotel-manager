@@ -6,10 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import { HomeContainer, SideBar } from "./HomeElements";
-import SideBarItems from "./SideBarItems";
-import Table from "./Table";
-import Settings from "./Settings";
-import Menu from "./Menu";
+import { Menu, SideBarItems, Settings, Table } from "./index";
 
 const Home = (props) => {
   return (
