@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
@@ -18,12 +18,11 @@ const Auth = (props) => {
     }
     return false;
   };
+  const [authorised, setAuthorised] = useState(() => {
+    return check(props.token);
+  });
 
-  return (
-    <>
-      {check(props.token) ? <Redirect to="/home" /> : <Redirect to="/login" />}
-    </>
-  );
+  return <>{authorised ? <Redirect to="/home" /> : <Redirect to="/login" />}</>;
 };
 
 export default Auth;

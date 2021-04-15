@@ -9,6 +9,12 @@ const App = () => {
     localStorage.getItem("token") || ""
   );
 
+  const handleLogout = (e) => {
+    setToken(null);
+  };
+
+  useEffect(() => {}, [token]);
+
   return (
     <Router>
       <Switch>
@@ -16,10 +22,10 @@ const App = () => {
           <Auth setToken={setToken} token={token} />
         </Route>
         <Route exact path="/login">
-          <Login setToken={setToken} />
+          <Login setToken={setToken} token={token} />
         </Route>
         <Route exact path="/home">
-          <Home setToken={setToken} />
+          <Home handleLogout={handleLogout} token={token} />
         </Route>
       </Switch>
     </Router>

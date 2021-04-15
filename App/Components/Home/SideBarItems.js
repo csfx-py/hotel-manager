@@ -16,12 +16,7 @@ const SideBarItems = (props) => {
           Settings
         </SideButton>
       </div>
-      <SideButton
-        onClick={(e) => {
-          props.setToken(null);
-          history.push("/");
-        }}
-      >
+      <SideButton onClick={props.handleLogout}>
         <BiLogOut />
         Logout
       </SideButton>

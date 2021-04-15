@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import {
   LoginContainer,
   LoginImage,
@@ -13,13 +13,14 @@ import {
 import WelcomeImage from "../../images/welcome.svg";
 
 const Login = (props) => {
-  const history = useHistory();
   const [disable, setDisable] = useState(false);
   const [loginValues, setLoginValues] = useState({ email: "", password: "" });
 
   const api = axios.create({
-    baseURL: `https://csfxlog-api.herokuapp.com/user/`,
+    baseURL: `https://csfxapi-login.herokuapp.com/user/`,
   });
+
+  useEffect(() => {}, [props.token]);
 
   const handleValues = (e) => {
     const { name, value } = e.target;
@@ -39,10 +40,8 @@ const Login = (props) => {
     });
     if (res.data.auth) {
       props.setToken(res.data.token);
-      setLoginValues({ email: "", password: "" });
-      history.push("/");
-      setDisable(false);
     } else {
+      setLoginValues({ email: "", password: "" });
       ipcApi.messageApi.sendMessage({
         message: res.data.message,
         title: "Error",
@@ -51,35 +50,38 @@ const Login = (props) => {
     }
   };
   return (
-    <MainContainer>
-      <LoginContainer>
-        <LoginImage>
-          <Image src={WelcomeImage} alt="React Logo" />
-        </LoginImage>
-        <Form onSubmit={handleSubmit}>
-          <Input
-            type="email"
-            name="email"
-            id=""
-            placeholder="email"
-            value={loginValues.email}
-            onChange={handleValues}
-            autoFocus={true}
-          />
-          <Input
-            type="password"
-            name="password"
-            id=""
-            placeholder="password"
-            value={loginValues.password}
-            onChange={handleValues}
-          />
-          <Button type="submit" disabled={disable}>
-            Login
-          </Button>
-        </Form>
-      </LoginContainer>
-    </MainContainer>
+    <>
+      {props.token && <Redirect to="/" />}
+      <MainContainer>
+        <LoginContainer>
+          <LoginImage>
+            <Image src={WelcomeImage} alt="React Logo" />
+          </LoginImage>
+          <Form onSubmit={handleSubmit}>
+            <Input
+              type="email"
+              name="email"
+              id=""
+              placeholder="email"
+              value={loginValues.email}
+              onChange={handleValues}
+              autoFocus={true}
+            />
+            <Input
+              type="password"
+              name="password"
+              id=""
+              placeholder="password"
+              value={loginValues.password}
+              onChange={handleValues}
+            />
+            <Button type="submit" disabled={disable}>
+              Login
+            </Button>
+          </Form>
+        </LoginContainer>
+      </MainContainer>
+    </>
   );
 };
 
