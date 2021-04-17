@@ -80,7 +80,7 @@ const MenuPage = (props) => {
               <TableHead></TableHead>
             </TableRow>
           </thead>
-          {/* <tbody>
+          <tbody>
             {props.Menu.map((obj, index) => (
               <MenuRow
                 key={index}
@@ -89,7 +89,7 @@ const MenuPage = (props) => {
                 setMenu={props.setMenu}
               />
             ))}
-          </tbody> */}
+          </tbody>
         </Table>
       </MenuTableContainer>
     </>
