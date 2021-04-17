@@ -11,6 +11,7 @@ import {
   TableHead,
   TableRow,
 } from "../HomeElements";
+import MenuRow from "./MenuRow";
 import useLocalStorage from "../../../useLocalStorage";
 
 const MenuPage = (props) => {
@@ -46,9 +47,8 @@ const MenuPage = (props) => {
   };
   return (
     <>
-      {console.log("test")}
       <Form onSubmit={handleSubmit}>
-        {/* <FormSpan>{props.settings.companyName}</FormSpan> */}
+        <FormSpan>{props.settings.companyName}</FormSpan>
         <FormGroup>
           <Input
             type="text"
@@ -71,6 +71,27 @@ const MenuPage = (props) => {
           </Button>
         </FormGroup>
       </Form>
+      <MenuTableContainer>
+        <Table>
+          <thead>
+            <TableRow>
+              <TableHead>Name</TableHead>
+              <TableHead>Price</TableHead>
+              <TableHead></TableHead>
+            </TableRow>
+          </thead>
+          {/* <tbody>
+            {props.Menu.map((obj, index) => (
+              <MenuRow
+                key={index}
+                obj={obj}
+                Menu={props.Menu}
+                setMenu={props.setMenu}
+              />
+            ))}
+          </tbody> */}
+        </Table>
+      </MenuTableContainer>
     </>
   );
 };

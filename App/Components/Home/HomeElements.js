@@ -96,3 +96,39 @@ export const SideButton = styled.button`
     outline: none;
   }
 `;
+
+export const Table = styled.table`
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: calc(100vw - 100px);
+  flex: 1 0 auto;
+  color: #fff;
+  table-layout: fixed;
+`;
+
+export const TableHead = styled.th`
+  text-align: left;
+  padding: 7px;
+  background: #202225;
+
+  &:first-child {
+    text-align: center;
+    width: 40%;
+  }
+  &:last-child {
+    text-align: center;
+    width: 5%;
+  }
+`;
+
+export const TableRow = styled.tr`
+  font-size: 1.1rem;
+
+  &:nth-child(even) {
+    background: #202225;
+  }
+`;
+export const MenuTableContainer = styled.div`
+  display: flex;
+  flex-direction: 1 0 auto;
+`;

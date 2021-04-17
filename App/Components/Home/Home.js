@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import {
-  Redirect
-} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import useLocalStorage from "../../useLocalStorage";
 import { HomeContainer, HomeMain, SideBar } from "./HomeElements";
 import { MenuPage, SideBarItems, Settings, TablePage } from "./index";
