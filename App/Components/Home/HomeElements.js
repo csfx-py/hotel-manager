@@ -132,3 +132,38 @@ export const MenuTableContainer = styled.div`
   display: flex;
   flex-direction: 1 0 auto;
 `;
+
+export const CloseButton = styled.button`
+  display: flex;
+  place-items: center;
+  background: transparent;
+  border: none;
+  color: #99aab5;
+  font-size: 1rem;
+  border-radius: 50%;
+  padding: 2px;
+
+  &:hover {
+    background: #7289da;
+    color: #fff;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const TableData = styled.td`
+  text-align: left;
+  padding: 7px;
+
+  &:first-child {
+    width: 40%;
+    text-align: left;
+  }
+
+  &:last-child {
+    text-align: center;
+    width: 5%;
+  }
+`;
