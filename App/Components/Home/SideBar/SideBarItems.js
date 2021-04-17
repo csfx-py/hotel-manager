@@ -1,18 +1,30 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 import { SideButton } from "../HomeElements";
 
 const SideBarItems = (props) => {
-  const history = useHistory();
   return (
     <>
       <div>
-        <SideButton onClick={() => history.push("/home/table")}>
+        <SideButton
+          onClick={() =>
+            props.setActiveTab({ menu: false, table: true, settings: false })
+          }
+        >
           Table
         </SideButton>
-        <SideButton onClick={() => history.push("/home/menu")}>Menu</SideButton>
-        <SideButton onClick={() => history.push("/home/settings")}>
+        <SideButton
+          onClick={() =>
+            props.setActiveTab({ menu: true, table: false, settings: false })
+          }
+        >
+          Menu
+        </SideButton>
+        <SideButton
+          onClick={() =>
+            props.setActiveTab({ menu: false, table: false, settings: true })
+          }
+        >
           Settings
         </SideButton>
       </div>

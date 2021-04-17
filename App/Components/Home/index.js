@@ -1,4 +1,4 @@
-export { default as Menu } from "./Menu/Menu";
+export { default as MenuPage } from "./Menu/MenuPage";
 export { default as Settings } from "./Settings/Settings";
 export { default as SideBarItems } from "./SideBar/SideBarItems";
-export { default as Table } from "./Table/Table";
+export { default as TablePage } from "./Table/TablePage";

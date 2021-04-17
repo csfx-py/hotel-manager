@@ -1,34 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  HashRouter as Router,
-  Switch,
-  Redirect,
-  Route,
+  Redirect
 } from "react-router-dom";
-import { HomeContainer, SideBar } from "./HomeElements";
-import { Menu, SideBarItems, Settings, Table } from "./index";
+import useLocalStorage from "../../useLocalStorage";
+import { HomeContainer, HomeMain, SideBar } from "./HomeElements";
+import { MenuPage, SideBarItems, Settings, TablePage } from "./index";
 
 const Home = (props) => {
+  const [activeTab, setActiveTab] = useState({
+    menu: false,
+    table: true,
+    settings: false,
+  });
+
+  const [Menu, setMenu] = useLocalStorage(
+    "Menu",
+    localStorage.getItem("Menu") || []
+  );
+
+  const [TableList, setTableList] = useLocalStorage(
+    "Tables",
+    localStorage.getItem("TableList") || []
+  );
+
+  const [settings, setSettings] = useLocalStorage("settings", {
+    companyName: localStorage.getItem("settings")
+      ? localStorage.getItem("settings").companyName
+      : "",
+  });
   return (
     <>
       {!props.token && <Redirect to="/" />}
       <HomeContainer>
-        <Router>
-          <SideBar>
-            <SideBarItems handleLogout={props.handleLogout} />
-          </SideBar>
-          <Switch>
-            <Route exact path="/home/table">
-              <Table />
-            </Route>
-            <Route exact path="/home/menu">
-              <Menu />
-            </Route>
-            <Route exact path="/home/settings">
-              <Settings />
-            </Route>
-          </Switch>
-        </Router>
+        <SideBar>
+          <SideBarItems
+            handleLogout={props.handleLogout}
+            setActiveTab={setActiveTab}
+          />
+        </SideBar>
+        <HomeMain>
+          {activeTab.menu && (
+            <MenuPage Menu={Menu} setMenu={setMenu} settings={settings} />
+          )}
+          {activeTab.table && (
+            <TablePage
+              settings={settings}
+              TableList={TableList}
+              setTableList={setTableList}
+              Menu={Menu}
+            />
+          )}
+          {activeTab.settings && (
+            <Settings settings={settings} setSettings={setSettings} />
+          )}
+        </HomeMain>
       </HomeContainer>
     </>
   );

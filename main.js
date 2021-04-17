@@ -27,7 +27,7 @@ function createWindow() {
   isDev && win.webContents.openDevTools();
 
   // Remove title bar menu
-  win.removeMenu();
+  // win.removeMenu();
 }
 
 if (isDev) {
