@@ -37,7 +37,7 @@ export const Form = styled.form`
 `;
 
 export const FormSpan = styled.span`
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin: 1rem;
   color: #fff;
   font-family: "Courier New", Courier, monospace;

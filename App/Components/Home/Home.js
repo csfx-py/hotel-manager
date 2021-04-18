@@ -25,6 +25,9 @@ const Home = (props) => {
     companyName: localStorage.getItem("settings")
       ? localStorage.getItem("settings").companyName
       : "",
+    GSTIN: localStorage.getItem("settings")
+      ? localStorage.getItem("settings").GSTIN
+      : "",
   });
   return (
     <>
